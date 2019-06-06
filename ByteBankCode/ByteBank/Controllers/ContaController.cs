@@ -80,7 +80,7 @@ namespace ByteBank.Controllers
 				new { usuarioId = usuario.Id, token = token },
 				Request.Url.Scheme);
 
-			await  UserManager.SendEmailAsync(usuario.Id, "ByteBank - Email de confirmação", $"Bem vindo ao fórum ByteBank, clique aqui {linkDeCallback} para confirmar seu email!");
+			await  UserManager.SendEmailAsync(usuario.Id, "ByteBank Diego - Email de confirmação", $"Bem vindo ao fórum ByteBank Diego, clique aqui {linkDeCallback} para confirmar seu email!");
 		}
 
 		public async Task<ActionResult> ConfirmacaoEmail(string usuarioId, string token)

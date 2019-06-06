@@ -17,10 +17,9 @@ namespace ByteBank.App_Start.Identity
 
 		public async Task SendAsync(IdentityMessage message)
 		{
-
 			using (var mensagemDeEmail = new MailMessage())
 			{
-				mensagemDeEmail.From = new MailAdress(EMAIL_ORIGEM);
+				mensagemDeEmail.From = new MailAddress(EMAIL_ORIGEM);
 
 				mensagemDeEmail.Subject = message.Subject;
 				mensagemDeEmail.To.Add(message.Destination);
@@ -36,13 +35,15 @@ namespace ByteBank.App_Start.Identity
 					smtpClient.Host = "smtp.gmail.com";
 					smtpClient.Port = 587;
 					smtpClient.EnableSsl = true;
+					smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+					smtpClient.UseDefaultCredentials = false;
+					smtpClient.Credentials = new NetworkCredential("bytebankvcom@gmail.com", "Ironman@4615");
 
 					smtpClient.Timeout = 20000;
 
 					await smtpClient.SendMailAsync(mensagemDeEmail);
 				}
 			}
-
 		}
 	}
 }

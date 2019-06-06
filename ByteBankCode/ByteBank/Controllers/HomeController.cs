@@ -15,14 +15,14 @@ namespace ByteBank.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Your application description page.";
+			ViewBag.Message = "Sua página de descrição do aplicativo.";
 
 			return View();
 		}
 
 		public ActionResult Contact()
 		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Entre em contato conosco.";
 
 			return View();
 		}
