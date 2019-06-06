@@ -1,0 +1,19 @@
+﻿@model ByteBank.ViewModels.TopicoCriarViewModel
+@* importando a bean de ViewModels MODELO *@
+
+@{
+    ViewBag.Title = "Criar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Criar</h2>
+
+@* Criar novo formulario *@
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary("", new { @Class = "text-danger" })//objeto anonimo
+
+    @Html.EditorForModel() //permite a edição do formulario
+
+}
+<input type="submit" value="Criar topico"

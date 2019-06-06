@@ -33,7 +33,6 @@ namespace ByteBank.Controllers
 			return View();
 		}
 
-
 		[HttpPost]
 		public async Task<ActionResult> Registrar(ContaRegistrarViewModel modelo)
 		{
@@ -80,7 +79,9 @@ namespace ByteBank.Controllers
 				new { usuarioId = usuario.Id, token = token },
 				Request.Url.Scheme);
 
-			await  UserManager.SendEmailAsync(usuario.Id, "ByteBank Diego - Email de confirmação", $"Bem vindo ao fórum ByteBank Diego, clique aqui {linkDeCallback} para confirmar seu email!");
+			var aqui = linkDeCallback;
+
+			await  UserManager.SendEmailAsync(usuario.Id, "ByteBank Diego - Email de confirmação", $"Bem vindo ao fórum ByteBank Diego, clique {linkDeCallback} para confirmar seu email!");
 		}
 
 		public async Task<ActionResult> ConfirmacaoEmail(string usuarioId, string token)
@@ -99,6 +100,23 @@ namespace ByteBank.Controllers
 				return View("Error");
 
 			throw new NotImplementedException();
+		}
+
+		public async Task<ActionResult> Login()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<ActionResult> Login(ContaLoginViewModel modelo)
+		{
+			if (ModelState.IsValid)
+			{
+				var usuario = await UserManager.FindByEmailAsync(modelo.Email); //procuraro endereço de email para ver se esta cadastrado
+				if (modelo.Senha == usuario.PasswordHash);
+			}
+			return View(modelo);
+
 		}
 
 		private void AdicionaErros(IdentityResult resultado)

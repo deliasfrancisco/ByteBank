@@ -1,0 +1,17 @@
+﻿@model ByteBank.ViewModels.ContaLoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary("", new { @Class = "text-danger" })//objeto anonimo
+
+    @Html.EditorForModel() //permite a edição do formulario
+
+    <input type="submit" value="Login" class="btn btn-group"/>
+}
