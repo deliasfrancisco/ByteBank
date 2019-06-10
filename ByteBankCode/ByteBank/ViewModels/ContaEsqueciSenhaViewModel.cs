@@ -6,18 +6,10 @@ using System.Web;
 
 namespace ByteBank.ViewModels
 {
-	public class ContaLoginViewModel
+	public class ContaEsqueciSenhaViewModel
 	{
 		[Required]
 		[EmailAddress]
 		public string Email { get; set; }
-
-		[Required]
-		[DataType(DataType.Password)]
-		public string Senha { get; set; }
-
-		[Display(Name ="Continuar Logado")]
-		public bool ContinuarLogado { get; set; }
-
 	}
 }
